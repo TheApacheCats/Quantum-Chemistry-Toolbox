@@ -1,4 +1,4 @@
-function extractlinks(filename)
+function qcExtractLinks(filename)
 % extracts frequncy information from gaussian log file.
 %    1 - Processes route section, builds list of links to execute, and
 %       initializes scratch files

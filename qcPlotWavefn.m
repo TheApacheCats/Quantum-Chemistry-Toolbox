@@ -1,4 +1,4 @@
-function plotwavefn(surface1, surface2)
+function qcPlotWavefn(surface1, surface2)
 N1 = length(surface1);
 N2 = length(surface2);
 for i = 1:N1/2

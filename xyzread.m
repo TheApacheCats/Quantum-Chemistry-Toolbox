@@ -1,5 +1,8 @@
 function record = xyzread(filename)
 % reads xyz files
+if nargin == 0
+    filename = uigetfile('*.xyz');
+end
 
 record = [];
 fid = fopen(filename);
@@ -9,6 +12,7 @@ Natoms = str2num(fgetl(fid));
 record.num_atoms = Natoms;
 [a b] = strtok(fgetl(fid),':');
 [a b] = strtok(b(2:end),'meV');
+record.mode_energy = zeros(Natoms*3,1);
 record.mode_energy(ci) = str2double(a);
 
 vib.f = zeros(1, 3*Natoms-6);
@@ -16,6 +20,7 @@ record.AN = zeros(Natoms,1);
 vib.x = zeros(Natoms, 3*Natoms-6);
 vib.y = zeros(Natoms, 3*Natoms-6);
 vib.z = zeros(Natoms, 3*Natoms-6);
+vp = zeros(Natoms,3);
 for ni = 1:Natoms
     tline = fgetl(fid);
     record.AN(ni) = getAN(tline(1:2));

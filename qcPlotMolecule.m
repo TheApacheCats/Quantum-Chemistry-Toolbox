@@ -1,5 +1,7 @@
 function qcPlotMolecule(AN, vp, style)
 % plots molecule
+%
+% qcPlotMolecule(AN, vp, style)
 if nargin == 0
     [AN vp] = parselink202;
 end
@@ -107,6 +109,8 @@ switch(na)
         c = [0 0 1];
     case 79 % copper
         c = [1 0.5 0];
+    otherwise
+        c = [0 0 0];
 end
 
 function drawrod(v0, v1)
